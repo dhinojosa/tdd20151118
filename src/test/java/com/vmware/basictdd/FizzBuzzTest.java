@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class FizzBuzzTest {
     
-	@Test
+	@Test(groups={"unit"})
 	public void testOne() {
 		//What is the simplest?
 		//a. do you want to call a method that given number it returns a string?
@@ -26,32 +26,32 @@ public class FizzBuzzTest {
 	}	
 	
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testThree() {
 		assertThat(FizzBuzz.getStringValue(3)).isEqualTo("Fizz");
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testSix() {
 		assertThat(FizzBuzz.getStringValue(6)).isEqualTo("Fizz");
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testFive() {
 		assertThat(FizzBuzz.getStringValue(5)).isEqualTo("Buzz");
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testTen() {
 		assertThat(FizzBuzz.getStringValue(10)).isEqualTo("Buzz");
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testFifteen() {
 		assertThat(FizzBuzz.getStringValue(15)).isEqualTo("FizzBuzz");
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testFourtyFive() {
 		assertThat(FizzBuzz.getStringValue(45)).isEqualTo("FizzBuzz");
 	}

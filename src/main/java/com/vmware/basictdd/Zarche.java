@@ -3,10 +3,10 @@ package com.vmware.basictdd;
 import java.util.Random;
 
 public class Zarche {
-
-	private int pips;
-	private Random random;
-
+	private final int pips;
+	private final Random random;
+	private static final int MAX_SIDES = 6;
+	
 	public Zarche(Random random) {
 		this(random, 1);
 	}
@@ -21,6 +21,7 @@ public class Zarche {
 	}
 
 	public Zarche roll() {
-		return new Zarche(random, random.nextInt(6) + 1);
+		return new Zarche(random, 
+				random.nextInt(MAX_SIDES) + 1);
 	}
 }

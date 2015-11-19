@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 public class CalcStatsTest {
 
-	@Test
+	@Test(groups={"unit"})
 	public void testMinimumValueWithAListOfOneElement() {
 		// How are people going to use this?
 		// a. CalcStats.getMinimum(list);
@@ -29,42 +29,42 @@ public class CalcStatsTest {
 		assertEquals(s.getMinimum(), new Integer(3)); // TestNG
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testEmptyList() {
 		List<Integer> integers = new ArrayList<>();
 		CalcStats s = new CalcStats(integers);
 		assertNull(s.getMinimum());
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testTwoPositiveTwoNegatives() {
 		List<Integer> integers = new ArrayList<>();
 		CalcStats s = new CalcStats(integers);
 		assertNull(s.getMinimum());
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testMinimumValueWithTwoElements() {
 		List<Integer> integers = Arrays.asList(10, 5);
 		CalcStats s = new CalcStats(integers);
 		assertEquals(s.getMinimum(), new Integer(5)); // TestNG
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testMinimumValueWithTwoNegativeElements() {
 		List<Integer> integers = Arrays.asList(-7, -3);
 		CalcStats s = new CalcStats(integers);
 		assertEquals(s.getMinimum(), new Integer(-7)); // TestNG
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testMinimumValueWithOneNegativeOnePositive() {
 		List<Integer> integers = Arrays.asList(-5001, 300);
 		CalcStats s = new CalcStats(integers);
 		assertEquals(s.getMinimum(), new Integer(-5001)); // TestNG
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testWithNullsInTheList() {
 		// We will be ignoring nulls by majority vote
 		List<Integer> integers = Arrays.asList(-5001, null, 300, 1, -20);
@@ -72,7 +72,7 @@ public class CalcStatsTest {
 		assertEquals(s.getMinimum(), new Integer(-5001)); // TestNG
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testWithNullsOnlyNullsInListOf2() {
 		// We will be ignoring nulls by majority vote
 		List<Integer> integers = Arrays.asList(null, null);
@@ -80,7 +80,7 @@ public class CalcStatsTest {
 		assertEquals(s.getMinimum(), null); // TestNG
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testWith6ElementsWithAMaxValue() {
 		// We will be ignoring nulls by majority vote
 		List<Integer> integers = Arrays.asList(-40, -20, -300, 1, -22, Integer.MAX_VALUE);
@@ -88,7 +88,7 @@ public class CalcStatsTest {
 		assertThat(s.getMinimum()).isEqualTo(-300);
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testWith6ElementsWithAMinValue() {
 		// We will be ignoring nulls by majority vote
 		List<Integer> integers = Arrays.asList(-40, 400, Integer.MIN_VALUE, -20, -300, 1, -22);
@@ -96,7 +96,7 @@ public class CalcStatsTest {
 		assertThat(s.getMinimum()).isEqualTo(Integer.MIN_VALUE);
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testWithNullAsList() {
 		try {
 		    new CalcStats(null);
@@ -107,7 +107,7 @@ public class CalcStatsTest {
 		}
 	}
 	
-	@Test(groups={"Free", "Zoom"})
+	@Test(groups={"unit"})
 	public void testWith6ElementsWithADuplicateValue() {
 		List<Integer> integers = 
 				Arrays.asList
@@ -127,7 +127,8 @@ public class CalcStatsTest {
     	};
     }
     
-    @Test(dataProvider = "maxData")
+    
+    @Test(groups={"unit"}, dataProvider = "maxData")
     public void testMaximumWithData
         (List<Integer> list, Object expectedResult) {
     	CalcStats s = new CalcStats(list);
@@ -147,7 +148,7 @@ public class CalcStatsTest {
     	};
     }
     
-    @Test(dataProvider = "sizeData")
+    @Test(groups={"unit"}, dataProvider = "sizeData")
     public void testSizeWithData
         (List<Integer> list, Integer expectedResult) {
     	CalcStats s = new CalcStats(list);
@@ -166,7 +167,7 @@ public class CalcStatsTest {
     	};
     }
 
-    @Test(dataProvider = "averageData")
+    @Test(groups={"unit"}, dataProvider = "averageData")
     public void testAverageWithData
         (List<Integer> list, Double expectedResult) {
     	CalcStats s = new CalcStats(list);
@@ -174,7 +175,7 @@ public class CalcStatsTest {
 		      isEqualTo(expectedResult, offset(.01));
     }
     
-    @Test
+    @Test(groups={"unit"})
     public void testAverageWithEmptyList() {
     	CalcStats s = new CalcStats(Arrays.asList());     	
     	try {

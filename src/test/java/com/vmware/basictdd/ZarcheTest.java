@@ -14,7 +14,7 @@ public class ZarcheTest {
 
 	// Atomic, Consistent
 
-	@Test
+	@Test(groups={"unit"})
 	public void testDefaultIs1() {
 		// Stub
 		Random random = new Random();
@@ -22,7 +22,7 @@ public class ZarcheTest {
 		assertThat(zarche.getPips()).isEqualTo(1);
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testSimpleRollOf4() {
 		// Stub
 		Random random = new Random() {
@@ -38,7 +38,7 @@ public class ZarcheTest {
 		assertThat(newZarche.getPips()).isEqualTo(4);
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testSimpleRollOf2() {
 		// Stub
 		Random random = new Random() {
@@ -54,7 +54,7 @@ public class ZarcheTest {
 		assertThat(newZarche.getPips()).isEqualTo(2);
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testSimpleRollOf2Then4() {
 		// Stub
 		Random random = new Random() {
@@ -78,7 +78,7 @@ public class ZarcheTest {
 		assertThat(newZarche2.getPips()).isEqualTo(4);
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testSimpleRollOf2Then4UsingMock() {
 		// Mock!
 		// Setup
@@ -102,7 +102,7 @@ public class ZarcheTest {
 		verify(random);
 	}
 	
-	@Test
+	@Test(groups={"integration"})
 	public void testIntegrationWithARealRandom() {
 	    Random random = new Random();
 	    Zarche zarche = new Zarche(random);
@@ -113,7 +113,7 @@ public class ZarcheTest {
 	    }
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testBUG3012() {
 		Random random = createMock(Random.class);
 		expect(random.nextInt(6)).andReturn(1).once();
@@ -127,7 +127,7 @@ public class ZarcheTest {
 		verify(random);
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testBUG3012WithZero() {
 		Random random = createMock(Random.class);
 		expect(random.nextInt(6)).andReturn(0).once();
@@ -141,7 +141,7 @@ public class ZarcheTest {
 		verify(random);
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testBUG3012WithSix() {
 		Random random = createMock(Random.class);
 		expect(random.nextInt(6)).andReturn(5).once();

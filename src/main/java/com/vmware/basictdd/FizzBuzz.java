@@ -4,6 +4,8 @@ import java.util.List;
 
 public class FizzBuzz {
 
+	private FizzBuzz() {}
+	
 	public static void main(String[] args) {
 	    for (int i = 0; i < 100; i++) {
 	    	System.out.println(FizzBuzz.getStringValue(i));
