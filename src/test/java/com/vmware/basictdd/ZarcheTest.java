@@ -28,7 +28,7 @@ public class ZarcheTest {
 		Random random = new Random() {
 			@Override
 			public int nextInt(int bound) {
-				return 4;
+				return 3;
 			}
 		};
 
@@ -44,7 +44,7 @@ public class ZarcheTest {
 		Random random = new Random() {
 			@Override
 			public int nextInt(int bound) {
-				return 2;
+				return 1;
 			}
 		};
 
@@ -64,9 +64,9 @@ public class ZarcheTest {
 			public int nextInt(int bound) {
 				if (times == 0) {
 					times++;
-					return 2;
+					return 1;
 				} else
-					return 4;
+					return 3;
 			}
 		};
 
@@ -85,8 +85,8 @@ public class ZarcheTest {
 		Random random = createMock(Random.class);
 		
 		// Rehearsal
-		expect(random.nextInt(7)).andReturn(2).once();
-		expect(random.nextInt(7)).andReturn(4).once();
+		expect(random.nextInt(6)).andReturn(1).once();
+		expect(random.nextInt(6)).andReturn(3).once();
 		
 		// Rewind/Replay
         replay(random);
@@ -116,12 +116,40 @@ public class ZarcheTest {
 	@Test
 	public void testBUG3012() {
 		Random random = createMock(Random.class);
-		expect(random.nextInt(7)).andReturn(2).once();
+		expect(random.nextInt(6)).andReturn(1).once();
         replay(random);
 		
 		Zarche zarche = new Zarche(random); // YES!!
 		Zarche newZarche = zarche.roll();
 		assertThat(newZarche.getPips()).isEqualTo(2);
+		
+		// Verify
+		verify(random);
+	}
+	
+	@Test
+	public void testBUG3012WithZero() {
+		Random random = createMock(Random.class);
+		expect(random.nextInt(6)).andReturn(0).once();
+        replay(random);
+		
+		Zarche zarche = new Zarche(random); // YES!!
+		Zarche newZarche = zarche.roll();
+		assertThat(newZarche.getPips()).isEqualTo(1);
+		
+		// Verify
+		verify(random);
+	}
+	
+	@Test
+	public void testBUG3012WithSix() {
+		Random random = createMock(Random.class);
+		expect(random.nextInt(6)).andReturn(5).once();
+        replay(random);
+		
+		Zarche zarche = new Zarche(random); // YES!!
+		Zarche newZarche = zarche.roll();
+		assertThat(newZarche.getPips()).isEqualTo(6);
 		
 		// Verify
 		verify(random);

@@ -107,7 +107,7 @@ public class CalcStatsTest {
 		}
 	}
 	
-	@Test
+	@Test(groups={"Free", "Zoom"})
 	public void testWith6ElementsWithADuplicateValue() {
 		List<Integer> integers = 
 				Arrays.asList

@@ -21,6 +21,6 @@ public class Zarche {
 	}
 
 	public Zarche roll() {
-		return new Zarche(random, random.nextInt(7));
+		return new Zarche(random, random.nextInt(6) + 1);
 	}
 }
